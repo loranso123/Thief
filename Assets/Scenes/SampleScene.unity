@@ -262,6 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _alarm: {fileID: 351742767}
+  _maxVolume: 0.2
 --- !u!82 &351742767
 AudioSource:
   m_ObjectHideFlags: 0

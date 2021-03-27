@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class Alarm : MonoBehaviour
 {
     [SerializeField] private AudioSource _alarm;
+    [SerializeField] private float _maxVolume;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -37,7 +38,7 @@ public class Alarm : MonoBehaviour
 
     private IEnumerator IncreceVolumeCoroutine()
     {
-        while (_alarm.volume < 0.2)
+        while (_alarm.volume < _maxVolume)
         {
             _alarm.volume += 0.0003f;
             yield return null;
