@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CircleInstantiate : MonoBehaviour
 {
-    public GameObject Template;
-    public int Count;
-    private GameObject[] _spownPoints;
+    [SerializeField] private GameObject _enemy;
+    [SerializeField] private GameObject _enemySpawnPoints;
+    [SerializeField]private int Count;
+    private Transform[] _spownPoints;
+    private float _delay = 2f;
 
     private void Start()
     {
@@ -16,14 +18,14 @@ public class CircleInstantiate : MonoBehaviour
 
     private IEnumerator SpawnEnemy()
     {
-        _spownPoints = GameObject.FindGameObjectsWithTag("EnemySpawn");
+        _spownPoints = _enemySpawnPoints.GetComponentsInChildren<Transform>();
 
         for (int i = 0; i < Count; i++)
         {
             var spawnPoint = Random.Range(0, _spownPoints.Length);
-            GameObject gameObject = Instantiate(Template, _spownPoints[spawnPoint].transform.position, Quaternion.identity);
+            GameObject enemy = Instantiate(_enemy, _spownPoints[spawnPoint].transform.position, Quaternion.identity);
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(_delay);
         }
     }
 }

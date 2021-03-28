@@ -514,8 +514,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3199dc14782f8b944aa0f906891ecd7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Template: {fileID: 5628018141983903104, guid: 08586fd7783fc044db3d21d7847f66d9,
-    type: 3}
+  _enemy: {fileID: 5628018141983903104, guid: 08586fd7783fc044db3d21d7847f66d9, type: 3}
+  _enemySpawnPoints: {fileID: 837139902}
   Count: 10
 --- !u!1001 &539727585
 PrefabInstance:
