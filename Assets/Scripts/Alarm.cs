@@ -6,8 +6,10 @@ using UnityEngine.Events;
 
 public class Alarm : MonoBehaviour
 {
+    private float volumeDelta = 0.1f;
     [SerializeField] private AudioSource _alarm;
     [SerializeField] private float _maxVolume;
+    [SerializeField] private float _minVolume;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,6 +33,7 @@ public class Alarm : MonoBehaviour
        var increceVolume = StartCoroutine(IncreceVolumeCoroutine());
 
     }
+
     public void DecreceVolume()
     {
         var decreceVolume = StartCoroutine(DecreceVolumeCoroutine());
@@ -40,16 +43,16 @@ public class Alarm : MonoBehaviour
     {
         while (_alarm.volume < _maxVolume)
         {
-            _alarm.volume += 0.0003f;
+            _alarm.volume = Mathf.MoveTowards(_alarm.volume, _maxVolume, volumeDelta * Time.deltaTime);
             yield return null;
         }
     }
 
     private IEnumerator DecreceVolumeCoroutine()
     {
-        while (_alarm.volume > 0)
+        while (_alarm.volume > _minVolume)
         {
-            _alarm.volume -= 0.0003f;
+            _alarm.volume = Mathf.MoveTowards(_alarm.volume, _minVolume, volumeDelta * Time.deltaTime);
             yield return null;
         }
     }

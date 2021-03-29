@@ -13,7 +13,6 @@ public class CircleInstantiate : MonoBehaviour
     private void Start()
     {
         var SpawnEnemyJob = StartCoroutine(SpawnEnemy());
-
     }
 
     private IEnumerator SpawnEnemy()
